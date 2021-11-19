@@ -1,0 +1,54 @@
+@startuml
+hide footbox
+actor Agent as agent
+participant GenesysCloud as gc
+participant "AC Widget" as widget
+participant "AC Middleware" as mw
+participant "AC API" as api
+participant "AWS S3" as s3
+
+agent -> gc: login
+gc --> agent
+agent -> gc: Select Interaction
+agent -> gc: Copy Interaction Id
+agent -> widget: Paste Interaction Id
+widget -> gc: Authenticate User with\n"Token Implicit Grant (Browser)"\nOauth Grant
+gc -> agent: login
+agent --> gc
+gc -> widget: Oauth Token
+widget -> mw: Send interaction Id\nand Oauth Token
+mw -> gc: Get user recording/conversation
+
+group GC 200 OK
+gc --> mw: 200 OK
+mw -> api: Get recording
+api --> mw: 200 OK
+mw -> s3: Create file of recording
+s3 --> mw
+mw -> s3: Generate presigned link to file
+s3 --> mw
+mw --> widget
+widget --> agent: 200 OK with presigned file link
+end
+
+group GC 401 Unauthorized
+gc --> mw: 401 Unauthorized
+mw --> widget
+widget --> agent: 401 Unauthorized no file
+end
+
+group GC Other Response Code
+gc --> mw: XXX
+
+mw --> widget
+widget --> agent: XXX no file
+end
+
+group AC Other Response Code
+gc --> mw: 200 OK
+mw -> api: Get recording
+api --> mw: XXX
+mw --> widget
+widget --> agent: XXX no file
+end
+@enduml

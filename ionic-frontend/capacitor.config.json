@@ -1,0 +1,6 @@
+{
+  "appId": "com.genesys.cloud.openmessaging",
+  "appName": "OpenMessagingDemo",
+  "webDir": "www",
+  "bundledWebRuntime": false
+}

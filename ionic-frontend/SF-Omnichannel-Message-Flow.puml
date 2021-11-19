@@ -1,0 +1,45 @@
+@startuml
+hide footbox
+actor customer
+box "Customer Website" #lightgreen
+  participant "SF OmniChannel\nWidget" as sfoc
+end box
+box SalesForce #lightblue
+  participant "SF Omnichannel\nAPI" as sfapi
+  participant "ChatFlow" as cf
+  participant "Routing\nRequest" as rr
+  participant "Apex Job" as apex
+  participant "Work Item\nRouting" as wir
+  participant "Task" as task
+  participant "Genesys Cloud for\nSalesforce Client" as ef
+end box
+actor Agent as agent
+box GenesysCloud #orange
+  participant OpenMessaging as om
+  participant "Routing\nEngine" as re
+  participant Queue as q
+  participant ACD as acd
+end box
+
+
+customer -> sfapi: Chat message
+sfapi -> cf
+cf -> rr
+rr -> apex
+apex -> wir
+wir --> apex
+apex -> om: Post to /api/v2/conversations/messages/inbound/open
+om -> re
+re -> q
+q -> acd
+acd -> ef
+ef -> wir: looks up work\nitem routing object
+wir --> ef
+ef -> agent: Screen pop\nWork Item
+ef -> task: Create Task record\nand associations
+group Agent Responds
+    agent -> sfapi
+    sfapi -> sfoc
+    sfoc -> customer
+end group
+@enduml

@@ -1,0 +1,33 @@
+  <ion-header>
+    <ion-toolbar>
+      <ion-title size="large"><img [src]="accountSettings.getHeaderIconUrl()" width="30px" style="text-align: center;">  {{accountSettings.getHomeBranding().iconLabel}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content [fullscreen]="true">
+    <ion-item>
+    <ion-label>Welcome {{accountSettings.getUserFirstName()}} {{accountSettings.getUserLastName()}}!</ion-label>
+    </ion-item>
+    <ion-item>
+    <ion-label>User id: {{accountSettings.getUserId()}}</ion-label>
+    </ion-item>
+    <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>{{accountSettings.getHomePageSubTitle()}}</ion-card-subtitle>
+      <ion-card-title>{{accountSettings.getHomePageTitle()}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <div>
+        <ul>
+          <li *ngFor="let detail of accountSettings.getHomePageDetails()">{{detail}}</li>
+        </ul>
+      </div>
+      <div>
+        <a [href]="accountSettings.getHomePageProductLink()">
+          <img [src]="accountSettings.getHomePageProductImageUrl()"/>
+        </a>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

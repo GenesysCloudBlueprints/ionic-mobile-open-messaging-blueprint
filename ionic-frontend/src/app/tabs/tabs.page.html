@@ -1,0 +1,25 @@
+<ion-tabs>
+
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="shopping">
+      <i [class]="accountSettingsService.getHomeBranding().faImageClass"></i>
+      <ion-label>{{accountSettingsService.getHomeBranding().iconLabel}}</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="chat">
+      <i [class]="accountSettingsService.getChatBranding().faImageClass"></i>
+      <ion-label>{{accountSettingsService.getChatBranding().iconLabel}}</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="account">
+      <i [class]="accountSettingsService.getNotificationBranding().faImageClass"></i>
+      <ion-label>{{accountSettingsService.getNotificationBranding().iconLabel}}
+        <ion-badge id="offers" *ngIf="notificationService.offerCount>0" color="danger">
+          {{notificationService.offerCount}}
+        </ion-badge>
+      </ion-label>
+
+    </ion-tab-button>
+  </ion-tab-bar>
+
+</ion-tabs>

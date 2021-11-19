@@ -1,0 +1,8 @@
+{
+  "name": "OpenMessagingDemo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "272cc568"
+}

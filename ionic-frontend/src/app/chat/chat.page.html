@@ -1,0 +1,38 @@
+<ion-header >
+  <ion-toolbar>
+    <ion-title size="large"><img [src]="accountSettings.getHeaderIconUrl()" width="30px" style="text-align: center;">  {{accountSettings.getChatBranding().iconLabel}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="noscroller">
+  <ion-list *ngIf="transcript.messages">
+      <div *ngFor="let message of transcript.messages" class="imessage">
+        <div *ngIf="message.text" [ngClass]="message.direction==='Outbound'?'from-me':'from-them'">
+          <ion-label *ngIf="message.text && !isQRCode(message.text); else decoratedMessageElement" >{{message.text}}</ion-label>
+          <ng-template #decoratedMessageElement>
+            <ion-label>
+              <qr-code *ngIf="isQRCode(message.text)" [value]="getQRCodeValue(message.text)" size="200" (click)="toggleFullscreen(message)"></qr-code>
+            </ion-label>
+          </ng-template>
+        </div>
+        <div *ngIf="message.content"  [class]="message.direction==='Outbound'?'from-me':'from-them'" >
+          <ion-img [src]="message.content[0].attachmentUrl" (ionImgDidLoad)="scrollToBottom()" (click)="toggleFullscreen(message)"></ion-img>
+        </div>
+        <div [class]="message.direction==='Outbound'?'from-me-meta':'from-them-meta'"><ion-label><time>{{message.channelTime | date:'short'}}</time></ion-label></div>
+      </div>
+  </ion-list>
+  <router-outlet></router-outlet>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-item>
+    <ion-textarea [(ngModel)]="messageToSend" id="email" placeholder="Type Message" id="messageInput" (keyup.enter)="sendMessage()"></ion-textarea>
+    <ion-button (click)="sendMessage()" color="primary"><i class="fa fa-paper-plane"></i></ion-button>
+    <ion-button (click)="getLocation()" color="primary"><i class="fa fa-map-marker"></i></ion-button>
+    <ion-button (click)="selectPhoto()" color="primary"><i class="fa fa-cloud-upload"></i></ion-button>
+  </ion-item>
+</ion-footer>
+<div (click)="toggleFullscreen()" [class.fullScreenDiv]="fullScreenContent && fullScreenContent.length > 0">
+  <qr-code *ngIf="isQRCode(fullScreenContent); else fullScreenImg" [value]="getQRCodeValue(fullScreenContent)" size="300"></qr-code>
+  <ng-template #fullScreenImg >
+    <img [class.fullScreenImg]="fullScreenContent && fullScreenContent.length > 0" [src]="fullScreenContent" />
+  </ng-template>
+</div>

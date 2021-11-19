@@ -1,0 +1,22 @@
+<ion-header >
+  <ion-toolbar>
+    <ion-title size="large"><img [src]="accountSettings.getHeaderIconUrl()" width="30px" style="text-align: center;">  {{accountSettings.getNotificationBranding().iconLabel}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="noscroller">
+  <ion-list *ngIf="notificationService.notifications && notificationService.notifications.notifications">
+    <div *ngFor="let notification of notificationService.notifications.notifications" class="imessage">
+      <div *ngIf="notification.content && !notification.acknowledged" class="from-them" >
+          <ion-label *ngIf="notification.content && !isQRCode(notification); else decoratedNotificationElement" >{{notification.content}}</ion-label>
+          <ng-template #decoratedNotificationElement>
+            <ion-label>
+              <qr-code *ngIf="isQRCode(notification)" [value]="notification.content" size="200"></qr-code>
+            </ion-label>
+          </ng-template>
+          <ion-button (click)="dismissNotification(notification)" color="danger" size="small" ><i class="fa fa-times"></i></ion-button>
+      </div>
+      <div *ngIf="notification.content && !notification.acknowledged" [class]="'from-them-meta'"><ion-label><time>{{notification.time | date:'short'}}</time></ion-label></div>
+    </div>
+  </ion-list>
+  <router-outlet></router-outlet>
+</ion-content>
