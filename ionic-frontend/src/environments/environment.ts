@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: true,
+  production: false,
   transcriptAPIBaseURL: 'https://eybjxm1imb.execute-api.us-east-1.amazonaws.com/Test/transcript/integration/',
   notificationAPIBaseURL: 'https://eybjxm1imb.execute-api.us-east-1.amazonaws.com/Test/notification/integration/',
   integrations: [
@@ -16,8 +16,8 @@ export const environment = {
       type: 'offers'
     },
   ],
-  userId: 'joe.demo@genesys.com',
-  firstName: 'Joe',
+  userId: 'juaquim.demo@genesys.com',
+  firstName: 'Juaquim',
   lastName: 'Demo',
   chatBranding: {
     faImageClass: 'fa fa-comments fa-3x',
@@ -44,3 +44,12 @@ export const environment = {
   homePageProductImageUrl: '../assets/icon/WalkMeIcon-Color.png',
   homePageProductLink: 'https://www.genesys.com/'
 };
+
+/*
+ * For easier debugging in development mode, you can import the following file
+ * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
+ *
+ * This import should be commented out in production mode because it will have a negative impact
+ * on performance if an error is thrown.
+ */
+// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
