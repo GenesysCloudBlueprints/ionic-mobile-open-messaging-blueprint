@@ -32,7 +32,13 @@ exports.handler = async (event) => {
         const userId = getParamFromPath(path, USER_ID_PATH_POSITION);
         const integrationId = getParamFromPath(path, INTEGRATION_ID_PATH_POSITION);
         if (path.toLowerCase().includes("demoopenmessagewebhook")) {
-            await writeMessageToDynamo(JSON.parse(event.body));
+            const eventBody = JSON.parse(event.body);
+            const messageType = eventBody.type;
+            if(messageType && messageType.toLowerCase() !== 'receipt') {
+                await writeMessageToDynamo(eventBody);
+            }else{
+                console.log('Ignoring message of type receipt');
+            }
         }else if (userId && integrationId && path.toLowerCase().includes("transcript")) {
             if (event.httpMethod == "POST") {
                 let message = formatGCMessage(event, integrationId, userId);
