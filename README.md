@@ -137,6 +137,58 @@ Click [here](./lambda-backend/README.md) to learn how to build, configure, and r
    * Assuming you have everything set up with NPM and Ionic you should be able to navigate to the ionic-frontend folder and
      type `ionic serve` and you should be up and running.
 
+### Usage
+Once you have everything set up, you can send a message from the chat part of the Ionic Frontend and it should get routed
+to your Genesys Cloud Inbound Message Flow.  To respond the agent just replies from the Genesys Cloud Agent Desktop and 
+Genesys Cloud will send that message to the webhook URL that you defined as part of the Genesys Cloud Open Messaging Integration.
+
+#### Agentless
+To send an agentless message you can follow documentation here to invoke the Genesys Cloud API: 
+https://developer.genesys.cloud/api/rest/v2/conversations/#post-api-v2-conversations-messages-agentless 
+
+Agentless messages can be helpful to proactively reach out to customers.
+
+#### Offers
+The "Offers" tab is used to push content to the customer but it is push only.  There is no reply allowed.  The use case 
+here is that we detected you doing something in an architect flow or predictive engagement and want to push information
+or a coupon or something to the customer.
+
+To use the "Offers" tab in the Ionic Frontend, you can post a message to your AWS API Gateway using the AWS API Gateway 
+endpoint you created.  You will POST to this URL: <AWS API Gateway URL>/integration/{integrationId}/user/{userId}
+* The integrationId is the id from the integrations section for the "offers" type in the 
+  [Ionic Config File](./ionic-frontend/src/environments/environment.ts)
+* The userId is the userId from the [Ionic Config File](./ionic-frontend/src/environments/environment.ts)
+* The body should be formatted like this:
+```
+{
+    "type": "text",
+    "content": "SuperCoupon",
+    "fromId": "agentId"
+}
+```
+#### QR Code support
+The application can render QR codes in both the "Connect" and the "Offers" tab.  
+
+Use this format from the Genesys Cloud Agent desktop or the Agentless API in the textBody.
+
+```
+{
+    "gcDecoratedMessage": {
+        "gcMessageType": "qrCode",
+        "gcMessageText": "SuperSpecialCoupon!"
+    }
+}
+```
+
+For the Offers tab you can POST this message body to the <AWS API Gateway URL>/integration/{integrationId}/user/{userId} URL:
+```
+{
+    "type": "qrcode",
+    "content": "SuperCoupon",
+    "fromId": "agentId"
+}
+```
+
 ### Disclaimer
 This project is meant to demonstrate the capabilities of the Open Messaging Integration.  This is not intended to be a 
 production application.  In addition to numerous security concerns listed in the installation instructions, no real 
