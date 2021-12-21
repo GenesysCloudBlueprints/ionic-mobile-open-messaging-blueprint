@@ -154,7 +154,7 @@ here is that we detected you doing something in an architect flow or predictive 
 or a coupon or something to the customer.
 
 To use the "Offers" tab in the Ionic Frontend, you can post a message to your AWS API Gateway using the AWS API Gateway 
-endpoint you created.  You will POST to this URL: <AWS API Gateway URL>/integration/{integrationId}/user/{userId}
+endpoint you created.  You will POST to this URL: `<AWS API Gateway URL>/integration/{integrationId}/user/{userId}`
 * The integrationId is the id from the integrations section for the "offers" type in the 
   [Ionic Config File](./ionic-frontend/src/environments/environment.ts)
 * The userId is the userId from the [Ionic Config File](./ionic-frontend/src/environments/environment.ts)
@@ -180,7 +180,7 @@ Use this format from the Genesys Cloud Agent desktop or the Agentless API in the
 }
 ```
 
-For the Offers tab you can POST this message body to the <AWS API Gateway URL>/integration/{integrationId}/user/{userId} URL:
+For the Offers tab you can POST this message body to the `<AWS API Gateway URL>/integration/{integrationId}/user/{userId}` URL:
 ```
 {
     "type": "qrcode",
