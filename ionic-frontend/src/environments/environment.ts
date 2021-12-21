@@ -4,21 +4,21 @@
 
 export const environment = {
   production: false,
-  transcriptAPIBaseURL: 'https://eybjxm1imb.execute-api.us-east-1.amazonaws.com/Test/transcript/integration/',
-  notificationAPIBaseURL: 'https://eybjxm1imb.execute-api.us-east-1.amazonaws.com/Test/notification/integration/',
+  transcriptAPIBaseURL: '<API Gateway URL>/transcript/integration/',
+  notificationAPIBaseURL: '<API Gateway URL>/notification/integration/',
   integrations: [
     {
-      id: 'd2e5aacb-47b5-4b8d-9c8f-21b9e8f4de22',
+      id: '<Genesys Cloud Open Messaging Integration GUID>',
       type: 'chat'
     },
     {
-      id: 'd2e5aacb-47b5-4b8d-9c8f-21b9e8f4de22',
+      id: '<Genesys Cloud Open Messaging Integration GUID>',
       type: 'offers'
     },
   ],
-  userId: 'juaquim.demo@genesys.com',
-  firstName: 'Juaquim',
-  lastName: 'Demo',
+  userId: '<customer email address>',
+  firstName: '<customer first name>',
+  lastName: '<customer last name>',
   chatBranding: {
     faImageClass: 'fa fa-comments fa-3x',
     iconLabel: 'Connect'
