@@ -1,4 +1,4 @@
-# ionic-mobile-open-messaging-blueprint
+# ionic-mobile-open-messaging-blueprint (DRAFT)
 This blueprint gives an example of how you can leverage the Genesys Open Messaging API to develop a simple bidirectional 
 chat between a customer and a call center agent within a mobile app.  This would allow you to add or extend chat functionality
 within your company's mobile app and allow your agent to communicate directly with your customer.
