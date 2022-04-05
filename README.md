@@ -1,4 +1,4 @@
-# Develop a chat functionality for mobile apps using Open messaging integration in Genesys Cloud, AWS services and Ionic framework
+# Develop a chat functionality for mobile apps using Open messaging integration in Genesys Cloud, AWS services, and Ionic framework
 
 > View the [Develop chat functionality for mobile apps using Open messaging integration in Genesys Cloud, AWS services, and Ionic framework](https://developer.mypurecloud.com/blueprints/) article on the Genesys Cloud Developer Center.
 
