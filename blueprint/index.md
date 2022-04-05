@@ -4,7 +4,7 @@ author: shane.garner
 indextype: blueprint
 icon: blueprint
 image: 
-category: 5
+category: 6
 summary: |
   This Genesys Cloud Developer Blueprint explains how to develop a simple bidirectional chat functionality within a mobile app using Open messaging integration in Genesys Cloud, AWS services, and Ionic framework. Add or extend this chat functionality in an existing mobile app. The chat feature enables your contact center agents to communicate directly with your customers.
 ---
