@@ -27,7 +27,7 @@ The blueprint showcases how to leverage the open messaging integration in Genesy
 
 * **Genesys Cloud** - A suite of Genesys Cloud services for enterprise-grade communications, collaboration, and contact center management. In this solution, you use the open messaging integration, Architect inbound message flow, integration, queues, and message routing in Genesys Cloud.
 * **Amazon API Gateway** - An AWS service for using APIs in a secure and scalable environment. In this solution, the API Gateway exposes a REST endpoint that is protected by an API key. Requests that come to the gateway are forwarded to an AWS Lambda function.
-* **AWS Lambda** - A serverless computing service for running code without creating or maintaining the underlying infrastructure. In this solution, AWS Lambda processes requests that come through the Amazon API Gateway and calls the Amazon Comprehend endpoint.
+* **AWS Lambda** - A serverless computing service for running code without creating or maintaining the underlying infrastructure. In this solution, AWS Lambda processes the requests that come through the Amazon API Gateway and forwards to Genesys Cloud.
 * **AWS DynamoDB** - A fully managed NoSQL database service offered by Amazon Web Services. The service supports key-valued cloud services and data structures designed to run high-performance applications at any scale.
   
 ## Prerequisites
@@ -136,9 +136,9 @@ When you set up the integration, you must get the GUID of the integration. You c
 4. Click **Send Request**.
 5. Search for your integration using the `name` field in the Response.
 6. Note the GUID of the integration, which is in the `id` field of your integration. 
-:::primary
-**Note**: You require the GUID of the integration to configure the Ionic front-end framework.
-:::
+   :::primary
+   **Note**: You require the GUID of the integration to configure the Ionic front-end framework.
+   :::
 
 ### Set up Genesys Cloud routing
 
