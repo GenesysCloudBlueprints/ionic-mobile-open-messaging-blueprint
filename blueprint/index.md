@@ -23,12 +23,6 @@ The blueprint showcases how to leverage the open messaging integration in Genesy
 
 ![Open Messaging Implementation](images/ionic-mobile-open-messaging-blueprint-architecture.png "Open Messaging Implementation")
 
-## Contents
-* [Solution components](#solution-components)
-* [Prerequisites](#prerequisites)
-* [Implementation steps](#implementation-steps)
-* [Additional resources](#additional-resources)
-
 ## Solution components
 
 * **Genesys Cloud** - A suite of Genesys Cloud services for enterprise-grade communications, collaboration, and contact center management. In this solution, you use the open messaging integration, Architect inbound message flow, integration, queues, and message routing in Genesys Cloud.
@@ -57,8 +51,6 @@ The blueprint showcases how to leverage the open messaging integration in Genesy
   * AWS Lambda
 
 ## Implementation steps
-
-1. Clone the GitHub repository
 
 ### Clone the GitHub repository
 
@@ -125,6 +117,7 @@ Add an Amazon API gateway to your Lambda function.
    * `Access-Control-Allow-Headers`
    * `Access-Control-Allow-Methods`
    * `Access-Control-Allow-Origin`
+   
    :::primary
    **Note**: The responses can contain wildcards that allow you to bypass the CORS issues on browser-based applications.
    :::
