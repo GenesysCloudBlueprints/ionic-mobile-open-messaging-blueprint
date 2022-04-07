@@ -57,62 +57,62 @@ Clone the GitHub repository [ionic-mobile-open-messaging-blueprint](https://gith
 
 ### Create an OAuth client in Genesys Cloud
 
-1. In Genesys Cloud, navigate to **Admin** > **OAuth** and click **Add Client**.
-2. Create an OAuth client with the following options:
-   1. Enter a name for the client and select **Client Credentials** as the Grant Type.
-   2. Click the **Roles** tab and select the role that has the following permissions:
-      1. Analytics > conversationDetail > View
-      2. Conversation > message > All Permissions
-3. Click **Save** and note the **Client ID** and **Client Secret** fields to use in the AWS Lambda setup.
+1. Log in to your Genesys Cloud organization.
+2. Navigate to **Admin** > **OAuth** and click **Add Client**.
+3. Enter a name for the client.
+4. Under **Grant Types**, select **Client Credentials**.
+5. Click the **Roles** tab and select the role that has the following permissions:
+      * Analytics > conversationDetail > View
+      * Conversation > message > All Permissions
+6. Click **Save**.
+7. Note the **Client ID** and **Client Secret** values to use in the AWS Lambda setup.
 
 ### Create the Amazon DynamoDB tables
 
-1. Create a table for Open messaging transcript. 
-   The persistent storage for the chat transcript that the Genesys Cloud writes to when an agent replies to a customer. Add the following columns to the table:
-   1. id
+1. Create a table to provide persistent storage of the chat transcript that the Genesys Cloud creates when an agent replies to a customer. Add the following columns to the table:
+   * id
       * type - String
       * Partition Key
-   2. channelTime
+   * channelTime
       * type - String
       * Sort Key
-2. Create a table for the Notifications. This table is for pushing notifications to the app and used only with the API. If you want Genesys Cloud to write to this table, then you must incorporate a data action to call the API. This table is optional only if you have the Notifications tab in the app. Add the following columns to the table:
-   1. id
+2. Optionally create a table used for notifications that are pushed with the API. If you want Genesys Cloud to write to this table, then you must incorporate a data action to call the API. This table is needed only if you have the Notifications tab in the app. Add the following columns to the table:
+   * id
       * type - String
       * Partition Key
-   2. channelTime
+   * channelTime
       * type - String
       * Sort Key
 
 ### Create an AWS S3 bucket
 
-To store any media sent from the Ionic front-end app, create an Amazon S3 bucket storage. The S3 bucket must have public read access for the objects. Ensure that you implement the security measures that are in line with your company.
+To store any media sent from the Ionic front-end app, in AWS create an S3 bucket. The S3 bucket must have public read access for the objects. Ensure that you implement the security measures that your company requires.
 
-### Create a Lambda function with NodeJs
+### Create a NodeJs Lambda function 
 
-1. Create a Lambda function with NodeJS in your AWS account.
+1. Create a Node.js Lambda function in your AWS account.
 2. Configure the Environment variables of the function using the following keys:
-   * GC_CLIENT_ID and GC_CLIENT_SECRET - Genesys Cloud OAuth client.
-   * TRANSCRIPT_TABLE_NAME - The name of the table created in DynamoDB.
-   * NOTIFICATION_TABLE_NAME - The name of the table created for notifications in DynamoDB.
-   * S3_URL_BUCKET - URL of the S3 bucket that stores the media files.
-3. Grant access to the Lambda function so that it allows the following services via IAM:
-   * PutObject - Adds an object to the S3 bucket.
-   * Scan, Query, GetItem, and PutItem - For the Amazon DynamoDB tables that you have created in the previous step.
+   * GC_CLIENT_ID and GC_CLIENT_SECRET - Genesys Cloud OAuth client
+   * TRANSCRIPT_TABLE_NAME - The name of the table created in DynamoDB
+   * NOTIFICATION_TABLE_NAME - The name of the table created for notifications in DynamoDB
+   * S3_URL_BUCKET - URL of the S3 bucket that stores the media files
+3. Grant access to the Lambda function so that it allows the following services via an IAM role:
+   * PutObject - Adds an object to the S3 bucket
+   * Scan, Query, GetItem, and PutItem - For the Amazon DynamoDB tables that you created previously
 4.  Package and deploy the Lambda function:
-    1.  To install the function, run `npm install` in the ./lambda-backend folder.
-    2.  To package the function, create a zip of the node_module folder and the index.js file.
-    3.  To deploy the function, upload the zip to Lambda using the AWS console.
+    1.  To install the function, navigate to your local repository for this blueprint solution. In the ./lambda-backend folder, run `npm install`.
+    2.  To package the function, create a zip file of the node_module folder and the index.js file.
+    3.  To deploy the function, use the AWS console to upload the zip file to the Lambda function.
 5. Deploy the Lambda function.
 
 
 ### Add an Amazon API Gateway to the Lambda function
 
-Add an Amazon API gateway to your Lambda function. 
 1. Create a REST API.
 2. You can use the Open API Definition to import the API resources and methods.
 3. Associate each method with the Lambda function.
 4. Set up a mock Lambda integration.
-5. For a mock integration, enable CORS by creating an OPTIONS method to return the required Method Response headers:
+5. For the mock integration, enable CORS by creating an OPTIONS method that returns the required Method Response headers:
    * `Access-Control-Allow-Headers`
    * `Access-Control-Allow-Methods`
    * `Access-Control-Allow-Origin`
@@ -120,6 +120,7 @@ Add an Amazon API gateway to your Lambda function.
    :::primary
    **Note**: The responses can contain wildcards that allow you to bypass the CORS issues on browser-based applications.
    :::
+   
 6. Deploy the API and make a note of the API endpoint URL for later use.
 
 ### Create the Open messaging integration in Genesys Cloud
