@@ -24,17 +24,17 @@ Node.js is used for back-end development. Node.js is executed within an AWS Lamb
 
 ## Solution components
 
-* **Genesys Cloud** - A suite of Genesys Cloud services for enterprise-grade communications, collaboration, and contact center management. In this solution, you use the open messaging integration, Architect inbound message flow, integration, queues, and message routing in Genesys Cloud.
-* **Amazon API Gateway** - An AWS service for using APIs in a secure and scalable environment. In this solution, the API Gateway exposes a REST endpoint that is protected by an API key. Requests that come to the gateway are forwarded to an AWS Lambda function.
-* **AWS Lambda** - A serverless computing service for running code without creating or maintaining the underlying infrastructure. In this solution, AWS Lambda processes the requests that come through the Amazon API Gateway and forwards to Genesys Cloud.
-* **AWS DynamoDB** - A fully managed NoSQL database service offered by Amazon Web Services. The service supports key-valued cloud services and data structures designed to run high-performance applications at any scale.
+* **Genesys Cloud CX** - A suite of Genesys Cloud services for enterprise-grade communications, collaboration, and contact center management. In this solution, you use the open messaging integration, Architect inbound message flow, queues, and message routing in Genesys Cloud.
+* **Amazon API Gateway** - An AWS service for using APIs in a secure and scalable environment. In this solution, the API Gateway exposes a REST endpoint that is protected by an API key. Requests that come to the API Gateway are forwarded to an AWS Lambda.
+* **AWS Lambda** - A serverless computing service for running code without creating or maintaining the underlying infrastructure. In this solution, AWS Lambda processes the requests that come through the Amazon API Gateway and forwards them to Genesys Cloud.
+* **Amazon DynamoDB** - A highly available, highly scalable NoSQL database that provides fast and predictable performance in a multi-region environment.
   
 ## Prerequisites
 
 ### Specialized knowledge
 
-* Administrator-level knowledge of Genesys Cloud.
-* AWS Cloud Practitioner-level knowledge of Amazon API Gateway, AWS Lambda, and Amazon DynamoDB.
+* Administrator-level knowledge of Genesys Cloud
+* AWS Cloud Practitioner-level knowledge of Amazon API Gateway, AWS Lambda, and Amazon DynamoDB
   
 ### Genesys Cloud account
 
