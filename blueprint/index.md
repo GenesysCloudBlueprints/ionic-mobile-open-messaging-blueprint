@@ -125,19 +125,22 @@ To store any media sent from the Ionic front-end app, in AWS create an S3 bucket
 
 ### Create the Open messaging integration in Genesys Cloud
 
-For more information about setting up an open messaging integration, see [Configuring an open messaging integration](https://help.mypurecloud.com/articles/configure-an-open-messaging-integration/ "Opens the Configuring an open messaging integration article") in the Genesys Cloud Resource Center. Use the following information to configure the integration:
+For complete information about setting up an open messaging integration, see [Configuring an open messaging integration](https://help.mypurecloud.com/?p=242772 "Opens the Configuring an open messaging integration article") in the Genesys Cloud Resource Center. 
+
+Use the following information to configure the integration:
 * Provide the Amazon API Gateway URL for Outbound Notification Webhook URL followed by `/demoopenmessagewebhook`.
 * We recommend using the secret token to validate the message.
 
-When you set up the integration, you must get the GUID of the integration. You can use the Genesys Cloud API explorer to get the GUID:
-1. Open the [Genesys Cloud API Explorer](https://developer.genesys.cloud/developer-tools/#/api-explorer "Opens the Genesys Cloud Developer API Explorer page").
+When you set up the integration, you must get the GUID of the integration. To use the Genesys Cloud API Explorer to get the GUID:
+1. Open the [Genesys Cloud API Explorer](https://developer.genesys.cloud/developer-tools/#/api-explorer "Opens the API Explorer in the Genesys Cloud Developer Tools").
 2. Navigate to **Conversations** > **Messaging**.
 3. Select **GET Get a list of Open messaging integrations**.
 4. Click **Send Request**.
-5. Search for your integration using the `name` field in the Response.
+5. In the **Response** section, search for the `name` field.
 6. Note the GUID of the integration, which is in the `id` field of your integration. 
+
    :::primary
-   **Note**: You require the GUID of the integration to configure the Ionic front-end framework.
+   **Note**: You need the GUID of the integration to configure the Ionic front-end framework.
    :::
 
 ### Set up Genesys Cloud routing
