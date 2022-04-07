@@ -1,27 +1,26 @@
 ---
-title: Develop a chat functionality for mobile apps using open messaging integration in Genesys Cloud, AWS services, and Ionic framework
+title: Develop a mobile app chat feature that uses Genesys Cloud open messaging, AWS services, and the Ionic framework
 author: shane.garner
 indextype: blueprint
 icon: blueprint
 image: 
 category: 6
 summary: |
-  This Genesys Cloud Developer Blueprint explains how to develop a simple bidirectional chat functionality within a mobile app using Open messaging integration in Genesys Cloud, AWS services, and Ionic framework. Add or extend this chat functionality in an existing mobile app. The chat feature enables your contact center agents to communicate directly with your customers.
+  This Genesys Cloud Developer Blueprint explains how to develop a simple bidirectional chat feature within a mobile app by using the Genesys Cloud open messaging integration, AWS services, and the Ionic framework. Add or extend this chat functionality to an existing mobile app. The chat feature enables your contact center agents to communicate directly with your customers.
 ---
-This Genesys Cloud Developer Blueprint explains how to develop a simple bidirectional chat functionality within a mobile app using the Open messaging integration in Genesys Cloud, AWS services, and Ionic framework. 
+This Genesys Cloud Developer Blueprint explains how to develop a simple bidirectional chat feature within a mobile app by using the Genesys Cloud open messaging integration, AWS services, and the Ionic framework. 
+
+![Open messaging implementation](images/ionic-mobile-open-messaging-blueprint-architecture.png "Open messaging implementation")
 
 ## Scenario
 
-Customer wants to add or extend the chat functionality of their existing mobile application. They require an in-app chat that allows their contact center agents to communicate directly with their customers.
+A customer wants to allow contact center agents to chat directly with customers via an existing mobile application. 
 
 ## Solution
 
-The chat functionality development includes the back-end and front-end interface development. For the front-end interface, the Ionic mobile app development platform integrated with Angular tool is used. For more information about the Ionic framework, see [https://ionicframework.com/](https://ionicframework.com/ "Opens the Ionic toolkit page").
-Node.js is used for back-end development, executed within an AWS Lambda function and exposed via the Amazon API Gateway.
+The chat feature includes the back-end and front-end interface development. For the front-end interface, the Ionic mobile app development platform that is integrated with Angular ecosystem is used. For more information about the Ionic framework, see [https://ionicframework.com/](https://ionicframework.com/ "Opens the Ionic toolkit page").
 
-The blueprint showcases how to leverage the open messaging integration in Genesys Cloud and the AWS services to build a chat functionality using the Ionic framework.
-
-![Open Messaging Implementation](images/ionic-mobile-open-messaging-blueprint-architecture.png "Open Messaging Implementation")
+Node.js is used for back-end development. Node.js is executed within an AWS Lambda function and exposed via the Amazon API Gateway.
 
 ## Solution components
 
