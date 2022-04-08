@@ -100,7 +100,7 @@ To store any media sent from the Ionic front-end app, in AWS create an S3 bucket
    * PutObject - Adds an object to the S3 bucket
    * Scan, Query, GetItem, and PutItem - For the Amazon DynamoDB tables that you created previously
 4.  Package and deploy the Lambda function:
-    1.  To install the function, navigate to your local repository for this blueprint solution. In the ./lambda-backend folder, run `npm install`.
+    1.  To install the function, in the ./lambda-backend folder, run `npm install`.
     2.  To package the function, create a zip file of the node_module folder and the index.js file.
     3.  To deploy the function, use the AWS console to upload the zip file to the Lambda function.
 5. Deploy the Lambda function.
