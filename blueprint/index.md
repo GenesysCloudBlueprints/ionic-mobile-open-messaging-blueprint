@@ -148,29 +148,29 @@ When you set up the integration, you must get the GUID of the integration. To us
 Set up routing for the integration to route the messages to your agents or bot.
 
 1. In Genesys Cloud, navigate to **Admin** > **Architect**.
-2. In Architect, create an Inbound Message flow. For more information, see [Add an inbound message flow](https://help.mypurecloud.com/articles/inbound-message-flows/ "Opens the Inbound message flows overview") in the Genesys Cloud Resource Center.
+2. In Architect, create an Inbound Message flow. For more information, see [Add an inbound message flow](https://help.mypurecloud.com/?p=150191 "Opens the Inbound message flows overview") in the Genesys Cloud Resource Center.
 3. Navigate to **Admin** > **Routing** > **Message Routing**.
-4. Associate the inbound message flow with a message route. To enter the inbound message flow, select the open messaging integration as the inbound address. For more information, see [Message routing](https://help.mypurecloud.com/articles/about-message-routing/ "Opens the Message routing overview article.") in the Genesys Cloud Resource Center.
+4. Associate the inbound message flow with a message route. To enter the inbound message flow, select the open messaging integration as the inbound address. For more information, see [Message routing](https://help.mypurecloud.com/?p=152351 "Opens the Message routing overview article.") in the Genesys Cloud Resource Center.
 
-### Configure and run Ionic framework
+### Configure and run the Ionic framework
 
 Install the Ionic toolkit from the instructions [here](https://ionicframework.com/ "Opens the Ionic framework website").
 1. After installation, populate the environment file ` ./ionic-frontend/src/environments/environment.ts` with the following information:
-   1. Enter the Amazon API Gateway URL for trancriptAPIBaseURL followed by `/transcript/integration/`.
-   2. Enter the Amazon API Gateway URL for notificationAPIBaseURL followed by `/notification/integration/`.
-   3. Specify the GUID of the Genesys Cloud open messaging integration in the `integrations` array. Replace the existing value with the GUID that is already present for `chat` and `offers` objects.
-   4. Provide the `userId` in the format of the email address of the user. 
+   * Enter the Amazon API Gateway URL for trancriptAPIBaseURL followed by `/transcript/integration/`.
+   * Enter the Amazon API Gateway URL for notificationAPIBaseURL followed by `/notification/integration/`.
+   * Specify the GUID of the Genesys Cloud open messaging integration in the `integrations` array. Replace the existing value with the GUID that is already present for `chat` and `offers` objects.
+   * Provide the `userId` in the format of the email address of the user. 
 For more information about installing and running the project using the Ionic toolkit, see [here](https://github.com/shansrini/ionic-mobile-open-messaging-blueprint/blob/main/ionic-frontend/README.md).
 
-If you have set with Ionic and `npm`, you can navigate to the ionic-frontend folder and execute `ionic serve` in the command prompt.
+If you have set with Ionic and `npm`, navigate to the ionic-frontend folder and execute `ionic serve` in the command prompt.
 
-### How it works?
+### Test how it works
 
 Once you have set up everything, send a message from the chat widget of the Ionic front-end interface. The chat message is routed to Genesys Cloud Inbound Message flow. The agent responds from the Genesys Cloud agent desktop and Genesys Cloud sends the message to the webhook URL defined in the open messaging integration.
 
 **Agentless setup**
 
-If you want to send an agentless message, you must invoke the Genesys Cloud API. For more information, see [Conversations](https://developer.genesys.cloud/api/rest/v2/conversations/#post-api-v2-conversations-messages-agentless "Opens the Conversations page") in Genesys Cloud Developer Center.
+If you want to send an agentless message, invoke the Genesys Cloud API. For more information, see [Conversations](https://developer.genesys.cloud/api/rest/v2/conversations/#post-api-v2-conversations-messages-agentless "Opens the Conversations page") in Genesys Cloud Developer Center.
 
 **Offers**
 
@@ -178,6 +178,7 @@ You can use the **Offers** tab in the Ionic front-end interface to push any info
 ```
 POST <Amazon API Gateway URL>/notification/integration/{integrationId}/user/{userId}
 ```
+
 From the Ionic configuration file, get the following details:
 * `integrationId` - The ID from the integrations section for the `Offers` type.
 * `userId` - The email address of the user.
@@ -212,6 +213,6 @@ In the **Offers** tab, you can POST this message body to the Amazon API Gateway 
 
 * [Amazon API Gateway](https://aws.amazon.com/api-gateway/ "Opens the Amazon API Gateway page") in the Amazon featured services
 * [AWS Lambda](https://aws.amazon.com/lambda/ "Opens the Amazon AWS Lambda page") in the Amazon featured services
-* [Ionic Docs](https://ionicframework.com/docs/ "Opens the Ionic framework documentation") in the Ionic framework site
-* [Open messaging integration](https://help.mypurecloud.com/articles/about-open-messaging/ "Opens the About open messaging page") in the Genesys Cloud Resource Center
+* [Ionic Docs](https://ionicframework.com/docs/ "Opens the Introduction to Ionic page") in the Ionic framework site
+* [Open messaging integration](https://help.mypurecloud.com/?p=237926 "Opens the About open messaging page") in the Genesys Cloud Resource Center
 * The [ionic-mobile-open-messaging-blueprint](https://github.com/GenesysCloudBlueprints/ionic-mobile-open-messaging-blueprint "Opens the ionic-mobile-open-messaging-blueprint repository in GitHub") repository in GitHub
