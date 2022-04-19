@@ -35,6 +35,7 @@ Node.js is used for back-end development. Node.js is executed within an AWS Lamb
 
 * Administrator-level knowledge of Genesys Cloud
 * AWS Cloud Practitioner-level knowledge of Amazon API Gateway, AWS Lambda, and Amazon DynamoDB
+* Experience creating tables in Amazon DynamoDB
   
 ### Genesys Cloud account
 
@@ -61,7 +62,7 @@ Clone the GitHub repository [ionic-mobile-open-messaging-blueprint](https://gith
 2. Navigate to **Admin** > **OAuth** and click **Add Client**.
 3. Enter a name for the client.
 4. Under **Grant Types**, select **Client Credentials**.
-5. Click the **Roles** tab and select the role that has the following permissions:
+5. Click the **Roles** tab and select a role. Ensure that the selected role has the following permissions:
       * Analytics > conversationDetail > View
       * Conversation > message > All Permissions
 6. Click **Save**.
@@ -69,7 +70,7 @@ Clone the GitHub repository [ionic-mobile-open-messaging-blueprint](https://gith
 
 ### Create the Amazon DynamoDB tables
 
-1. Create a table to provide persistent storage of the chat transcript that the Genesys Cloud creates when an agent replies to a customer. Add the following columns to the table:
+1. Create a [table](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/getting-started-step-1.html "Opens the Create a table page in Amazon DynamoDB documentation") to provide persistent storage of the chat transcript that the Genesys Cloud creates when an agent replies to a customer. Add the following columns to the table:
    * id
       * type - String
       * Partition Key
@@ -86,7 +87,7 @@ Clone the GitHub repository [ionic-mobile-open-messaging-blueprint](https://gith
 
 ### Create an AWS S3 bucket
 
-To store any media sent from the Ionic front-end app, in AWS create an S3 bucket. The S3 bucket must have public read access for the objects. Ensure that you implement the security measures that your company requires.
+To store any media sent from the Ionic front-end app, create an S3 bucket in AWS. The S3 bucket must have public read access for the objects. Ensure that you implement the security measures that your company requires.
 
 ### Create a NodeJs Lambda function 
 
@@ -109,7 +110,7 @@ To store any media sent from the Ionic front-end app, in AWS create an S3 bucket
 ### Add an Amazon API Gateway to the Lambda function
 
 1. Create a REST API.
-2. You can use the Open API Definition to import the API resources and methods.
+2. You can use the OpenAPI Definition to import the API resources and methods.
 3. Associate each method with the Lambda function.
 4. Set up a mock Lambda integration.
 5. For the mock integration, enable CORS by creating an OPTIONS method that returns the required Method Response headers:
@@ -160,9 +161,8 @@ Install the Ionic toolkit from the instructions [here](https://ionicframework.co
    * Enter the Amazon API Gateway URL for notificationAPIBaseURL followed by `/notification/integration/`.
    * Specify the GUID of the Genesys Cloud open messaging integration in the `integrations` array. Replace the existing value with the GUID that is already present for `chat` and `offers` objects.
    * Provide the `userId` in the format of the email address of the user. 
-For more information about installing and running the project using the Ionic toolkit, see [here](https://github.com/shansrini/ionic-mobile-open-messaging-blueprint/blob/main/ionic-frontend/README.md).
-
-If you have set with Ionic and `npm`, navigate to the ionic-frontend folder and execute `ionic serve` in the command prompt.
+For more information about installing and running the project using the Ionic toolkit, see [here](https://github.com/shansrini/ionic-mobile-open-messaging-blueprint/blob/main/ionic-frontend/README.md)
+2. Navigate to the ionic-frontend folder and execute `ionic serve` in the command prompt.
 
 ### Test how it works
 
