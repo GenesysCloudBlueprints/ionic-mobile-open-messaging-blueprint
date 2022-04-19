@@ -35,7 +35,9 @@ Node.js is used for back-end development. Node.js is executed within an AWS Lamb
 
 * Administrator-level knowledge of Genesys Cloud
 * AWS Cloud Practitioner-level knowledge of Amazon API Gateway, AWS Lambda, and Amazon DynamoDB
+* Experience setting up Amazon API Gateway
 * Experience creating tables in Amazon DynamoDB
+* Experience installing and configuring the Ionic framework
   
 ### Genesys Cloud account
 
