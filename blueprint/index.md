@@ -163,7 +163,7 @@ Install the Ionic toolkit from the instructions [here](https://ionicframework.co
    * Enter the Amazon API Gateway URL for notificationAPIBaseURL followed by `/notification/integration/`.
    * Specify the GUID of the Genesys Cloud open messaging integration in the `integrations` array. Replace the existing value with the GUID that is already present for `chat` and `offers` objects.
    * Provide the `userId` in the format of the email address of the user. 
-For more information about installing and running the project using the Ionic toolkit, see [here](https://github.com/shansrini/ionic-mobile-open-messaging-blueprint/blob/main/ionic-frontend/README.md)
+For more information about installing and running the project using the Ionic toolkit, see [here](https://github.com/GenesysCloudBlueprints/ionic-mobile-open-messaging-blueprint/blob/main/blueprint/ionic-frontend/README.md)
 2. Navigate to the ionic-frontend folder and execute `ionic serve` in the command prompt.
 
 ### Test how it works
